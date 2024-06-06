@@ -29,7 +29,7 @@
         <div class="container has-text-centered">
             <div class="file is-boxed has-name is-primary is-centered">
                 <label class="file-label">
-                    <input class="file-input" type="file" name="files[]" bind:files={files}>
+                    <input class="file-input" type="file" accept="video/mp4, video/mov" bind:files={files}>
                     <span class="file-cta">
                         <span class="file-label"> Upload! </span>
                     </span>
