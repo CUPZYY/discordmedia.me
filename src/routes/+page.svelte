@@ -3,7 +3,7 @@
 
     let files;
     let data;
-    let vidUrl;
+    let vidUrl = "";
     let progress = 0;
     files?.[0].name
     $: {
@@ -28,7 +28,7 @@
     <h1 class="title is-1 has-text-centered">discord video</h1>
     <div class="container block">
         <div class="container has-text-centered">
-            <div class="file is-boxed has-name is-primary is-centered">
+            <div class="file is-boxed has-name {files?.[0] ? "is-success" : "is-primary"} is-centered">
                 <label class="file-label">
                     <input class="file-input" type="file" accept="video/mp4, video/mov" bind:files={files}>
                     <span class="file-cta">
@@ -38,7 +38,7 @@
                 </label>
             </div>
             <progress class="progress is-link" value="{progress}" max="100"></progress>
-            <input type="text" value="{vidUrl ?? ""}" placeholder="No file uploaded" class="input is-success" readonly>
+            <input type="text" placeholder="No file uploaded" value="{vidUrl}" class="input {vidUrl ? "is-success" : "is-primary"}" readonly>
         </div>
     </div>
 </section>
