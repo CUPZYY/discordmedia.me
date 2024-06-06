@@ -1,21 +1,24 @@
 <script>
+    import axios from "axios";
+
     let files;
     let data;
     let vidUrl;
+    let progress = 0;
     files?.[0].name
     $: {
         if (files?.[0]) {
             data = new FormData()
             data.append("files[]", files[0])
-            const res = fetch("https://up1.fileditch.com/upload.php", {
-                method: "POST",
-                body: data
-            })
-            res.then((response) => {
-                response.json().then((responseData) => {
-                    console.log(responseData)
-                    vidUrl = responseData?.["files"]?.[0]?.["url"]
-                })
+            axios.post("https://up1.fileditch.com/upload.php", data, {
+                onUploadProgress: (progressEvent) => {
+                    if (progressEvent.bytes) {
+                        progress = Math.round((progressEvent.loaded / progressEvent.total) * 100)
+                    }
+                }
+            }).then(function (response) {
+                    vidUrl = response?.["data"]?.["files"]?.[0]?.["url"]
+                    progress = 100
             })
         }
     }
@@ -34,6 +37,7 @@
                     <span class="file-name"> {files?.[0].name ?? "No file uploaded"} </span>
                 </label>
             </div>
+            <progress class="progress is-link" value="{progress}" max="100"></progress>
             <input type="text" value="{vidUrl ?? ""}" placeholder="No file uploaded" class="input is-success" readonly>
         </div>
     </div>
