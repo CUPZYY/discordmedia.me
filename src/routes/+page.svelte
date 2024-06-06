@@ -1,6 +1,26 @@
 <script>
     let files;
-    $: console.log(files?.[0].name);
+    let data;
+    let vidUrl;
+    files?.[0].name
+    $: {
+        console.log("1")
+        if (files?.[0]) {
+            data = new FormData()
+            data.append("files[]", files[0])
+            const res = fetch("https://up1.fileditch.com/upload.php", {
+                method: "POST",
+                body: data
+            })
+            res.then((response) => {
+                console.log(response)
+                response.json().then((responseData) => {
+                    console.log(responseData)
+                    vidUrl = responseData?.["files"]?.[0]?.["url"]
+                })
+            })
+        }
+    }
 </script>
 
 <section class="section is-medium">
@@ -16,7 +36,7 @@
                     <span class="file-name"> {files?.[0].name ?? "No file uploaded"} </span>
                 </label>
             </div>
-            <input type="text" class="input is-success" readonly>
+            <input type="text" value="{vidUrl ?? ""}" placeholder="No file uploaded" class="input is-success" readonly>
         </div>
     </div>
 </section>
