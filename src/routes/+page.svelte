@@ -25,7 +25,9 @@
 </script>
 
 <section class="section is-medium">
-    <h1 class="title is-1 has-text-centered">discord video</h1>
+    <div class="block">
+        <a href="."><h1 class="title is-1 has-text-centered">discord video</h1></a>
+    </div>
     <div class="container block">
         <div class="container has-text-centered">
             <div class="file is-boxed has-name {files?.[0] ? "is-success" : "is-primary"} is-centered">
