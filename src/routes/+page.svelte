@@ -4,7 +4,6 @@
     let vidUrl;
     files?.[0].name
     $: {
-        console.log("1")
         if (files?.[0]) {
             data = new FormData()
             data.append("files[]", files[0])
@@ -13,7 +12,6 @@
                 body: data
             })
             res.then((response) => {
-                console.log(response)
                 response.json().then((responseData) => {
                     console.log(responseData)
                     vidUrl = responseData?.["files"]?.[0]?.["url"]
