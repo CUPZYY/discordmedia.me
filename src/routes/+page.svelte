@@ -5,42 +5,67 @@
     let data;
     let vidUrl = "";
     let progress = 0;
-    files?.[0].name
+    files?.[0].name;
     $: {
         if (files?.[0]) {
-            data = new FormData()
-            data.append("files[]", files[0])
-            axios.post("https://up1.fileditch.com/upload.php", data, {
-                onUploadProgress: (progressEvent) => {
-                    if (progressEvent.bytes) {
-                        progress = Math.round((progressEvent.loaded / progressEvent.total) * 100)
-                    }
-                }
-            }).then(function (response) {
-                    vidUrl = response?.["data"]?.["files"]?.[0]?.["url"]
-                    progress = 100
-            })
+            data = new FormData();
+            data.append("files[]", files[0]);
+            axios
+                .post("https://up1.fileditch.com/upload.php", data, {
+                    onUploadProgress: (progressEvent) => {
+                        if (progressEvent.bytes) {
+                            progress = Math.round(
+                                (progressEvent.loaded / progressEvent.total) *
+                                    100,
+                            );
+                        }
+                    },
+                })
+                .then(function (response) {
+                    vidUrl = response?.["data"]?.["files"]?.[0]?.["url"];
+                    progress = 100;
+                });
         }
     }
 </script>
 
 <section class="section is-medium">
     <div class="block">
-        <a href="."><h1 class="title is-1 has-text-centered">discord video</h1></a>
+        <a href="."
+            ><h1 class="title is-1 has-text-centered">discord video</h1></a
+        >
     </div>
     <div class="container block">
         <div class="container has-text-centered">
-            <div class="file is-boxed has-name {files?.[0] ? "is-success" : "is-primary"} is-centered">
+            <div
+                class="file is-boxed has-name {files?.[0]
+                    ? 'is-success'
+                    : 'is-primary'} is-centered"
+            >
                 <label class="file-label">
-                    <input class="file-input" type="file" accept="video/mp4, video/mov" bind:files={files}>
+                    <input
+                        class="file-input"
+                        type="file"
+                        accept="video/mp4, video/mov"
+                        bind:files
+                    />
                     <span class="file-cta">
                         <span class="file-label"> Upload! </span>
                     </span>
-                    <span class="file-name"> {files?.[0].name ?? "No file uploaded"} </span>
+                    <span class="file-name">
+                        {files?.[0].name ?? "No file uploaded"}
+                    </span>
                 </label>
             </div>
-            <progress class="progress is-link" value="{progress}" max="100"></progress>
-            <input type="text" placeholder="No file uploaded" value="{vidUrl}" class="input {vidUrl ? "is-success" : "is-primary"}" readonly>
+            <progress class="progress is-link" value={progress} max="100"
+            ></progress>
+            <input
+                type="text"
+                placeholder="No file uploaded"
+                value={vidUrl}
+                class="input {vidUrl ? 'is-success' : 'is-primary'}"
+                readonly
+            />
         </div>
     </div>
 </section>
