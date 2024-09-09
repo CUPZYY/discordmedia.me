@@ -1,4 +1,4 @@
-<script>
+<script async>
     import axios from "axios";
 
     let files;
@@ -10,21 +10,16 @@
         if (files?.[0]) {
             data = new FormData();
             data.append("files[]", files[0]);
-            axios
-                .post("https://up1.fileditch.com/upload.php", data, {
-                    onUploadProgress: (progressEvent) => {
-                        if (progressEvent.bytes) {
-                            progress = Math.round(
-                                (progressEvent.loaded / progressEvent.total) *
-                                    100,
-                            );
-                        }
-                    },
-                })
-                .then(function (response) {
-                    vidUrl = response?.["data"]?.["files"]?.[0]?.["url"];
-                    progress = 100;
-                });
+            axios.post("https://up1.fileditch.com/upload.php", data, {
+                onUploadProgress: (progressEvent) => {
+                    if (progressEvent.bytes) {
+                        progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+                    }
+                },
+            }).then(function (response) {
+                vidUrl = response?.["data"]?.["files"]?.[0]?.["url"];
+                progress = 100;
+            });
         }
     }
 </script>
