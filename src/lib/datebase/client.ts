@@ -1,12 +1,12 @@
-import Database from "better-sqlite3/lib/database";
-import { drizzle } from "drizzle-orm/better-sqlite3";
-import { InsertUrl, Url, urlTable } from "./schema";
+import { drizzle, type BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
+import { type InsertUrl, type Url, urlTable } from "./schema";
+import Database from "better-sqlite3";
 
 const sqlite = new Database("database.db");
-const db = drizzle(sqlite);
+const db: BetterSQLite3Database = drizzle(sqlite)
 
 const result: Url[] = db.select().from(urlTable).all()
 
-const insertUrl = (url: InsertUrl) => {
+export const insertUrl = (url: InsertUrl) => {
     return db.insert(urlTable).values(url).run()
 }
