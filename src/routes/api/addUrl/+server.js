@@ -1,10 +1,11 @@
-import { addUrl } from '$lib/datebase/wrapper';
+import { addUrl, generateID } from '$lib/datebase/wrapper';
 import { json } from '@sveltejs/kit';
 
 
 export async function POST({request, cookies}) {
     const data = await request.json();
-    addUrl(data["videoUrl"])
+    const id = await generateID()
+    await addUrl(id, data["videoUrl"])
 
-    return json({"message": "testinggg"});
+    return json({id: id});
 }
