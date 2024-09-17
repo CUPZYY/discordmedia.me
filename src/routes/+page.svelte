@@ -18,13 +18,13 @@
                     }
                 },
             }).then(function (response) {
-                vidUrl = response?.["data"]?.["files"]?.[0]?.["url"];
+                let directUrl = response?.["data"]?.["files"]?.[0]?.["url"];
                 progress = 100;
 
-                let dbData = {"videoUrl": vidUrl}
+                let dbData = {"videoUrl": directUrl}
 
                 axios.post("/api/addUrl", dbData).then(function (response) {
-                    console.log(response)
+                    vidUrl = window.location.origin + "/v/" + response.data.id
                 });
             });
         }
