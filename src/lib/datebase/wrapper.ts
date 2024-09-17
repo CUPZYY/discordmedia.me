@@ -1,10 +1,11 @@
-import { insertUrl } from "./client";
+import { db } from "./client";
+import { urlTable } from "./schema";
 
 export async function addUrl(videoUrl: string, thumbnailUrl = null, id = "") {
     if (!id) {
         id = await generateID()
     }
-    insertUrl({id: id, video_url: videoUrl, thumbnail_url: thumbnailUrl})
+    db.insert(urlTable).values({id: id, video_url: videoUrl, thumbnail_url: thumbnailUrl}).run()
 }
 
 async function generateID() {
