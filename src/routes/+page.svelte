@@ -2,15 +2,16 @@
     import axios from "axios";
 
     let files;
-    let data;
+    let lastFiles;
     let vidUrl = "";
     let progress = 0;
     files?.[0].name;
     $: {
-        if (files?.[0]) {
-            data = new FormData();
-            data.append("files[]", files[0]);
-            axios.post("https://up1.fileditch.com/upload.php", data, {
+        if (files?.[0] && lastFiles != files) {
+            lastFiles = files
+            let uploadData = new FormData();
+            uploadData.append("files[]", files[0]);
+            axios.post("https://up1.fileditch.com/temp/upload.php", uploadData, {
                 onUploadProgress: (progressEvent) => {
                     if (progressEvent.bytes) {
                         progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
