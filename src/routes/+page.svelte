@@ -20,6 +20,12 @@
             }).then(function (response) {
                 vidUrl = response?.["data"]?.["files"]?.[0]?.["url"];
                 progress = 100;
+
+                let dbData = {"videoUrl": vidUrl}
+
+                axios.post("/api/addUrl", dbData).then(function (response) {
+                    console.log(response)
+                });
             });
         }
     }
