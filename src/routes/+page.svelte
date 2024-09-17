@@ -11,7 +11,7 @@
             lastFiles = files
             let uploadData = new FormData();
             uploadData.append("files[]", files[0]);
-            axios.post("https://up1.fileditch.com/temp/upload.php", uploadData, {
+            axios.post("https://up1.fileditch.com/upload.php", uploadData, {
                 onUploadProgress: (progressEvent) => {
                     if (progressEvent.bytes) {
                         progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
