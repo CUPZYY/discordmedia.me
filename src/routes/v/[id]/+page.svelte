@@ -6,6 +6,10 @@
     export let data;
 </script>
 
+<svelte:head>
+    <meta property="og:video:url" content={data.video_url}>
+</svelte:head>
+
 <section class="section">
     <video width="500" class="" controls>
         <source src="{data.video_url}" type="video/mp4">
