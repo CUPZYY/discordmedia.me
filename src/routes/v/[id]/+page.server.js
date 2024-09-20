@@ -2,5 +2,5 @@
 import { getData } from "$lib/datebase/wrapper";
 
 export async function load({ params }) {
-    return await getData(params.id)
+    return await getData(params.id);
 }

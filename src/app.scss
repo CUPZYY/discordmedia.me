@@ -1,8 +1,8 @@
 // Path to Bulma's sass folder
 @use "bulma/sass" with (
-  $family-primary: '"Nunito", sans-serif',
-  $control-border-width: 2px,
-  $input-shadow: none
+    $family-primary: '"Nunito", sans-serif',
+    $control-border-width: 2px,
+    $input-shadow: none
 );
 
 // Import the Google Font
