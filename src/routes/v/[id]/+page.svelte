@@ -7,6 +7,7 @@
 </script>
 
 <svelte:head>
+    <meta property="og:type" content="video.other" />
     <meta property="og:video:url" content={data.video_url} />
 </svelte:head>
 
