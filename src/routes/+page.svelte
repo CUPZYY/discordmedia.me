@@ -54,7 +54,7 @@
                     <input
                         class="file-input"
                         type="file"
-                        accept="video/mp4, video/mov"
+                        accept="video/mp4, video/quicktime"
                         bind:files
                     />
                     <span class="file-cta">
