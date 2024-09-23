@@ -17,5 +17,5 @@ export async function getData(id: string) {
 }
 
 export async function generateID() {
-    return (Math.random() + 1).toString(36).substring(6);
+    return (Math.random() + 1).toString(36).slice(-length);
 }
