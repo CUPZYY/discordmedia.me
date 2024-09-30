@@ -2,7 +2,8 @@
 @use "bulma/sass" with (
     $family-primary: '"Nunito", sans-serif',
     $control-border-width: 2px,
-    $input-shadow: none
+    $input-shadow: none,
+    $primary: #5865f2
 );
 
 // Import the Google Font

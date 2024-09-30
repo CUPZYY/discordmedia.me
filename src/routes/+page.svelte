@@ -65,7 +65,7 @@
                     </span>
                 </label>
             </div>
-            <progress class="progress is-link" value={progress} max="100"
+            <progress class="progress is-primary" value={progress} max="100"
             ></progress>
             <input
                 type="text"
