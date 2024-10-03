@@ -1,5 +1,5 @@
 <script async>
-    import DropdownBox from "$lib/components/DropdownBox.svelte";
+    import DropdownBox from "$lib/client/components/DropdownBox.svelte";
     import BxUpload from "~icons/bx/upload";
     import axios from "axios";
 
