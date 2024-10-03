@@ -1,4 +1,6 @@
 <script async>
+    import DropdownBox from "$lib/components/DropdownBox.svelte";
+    import BxUpload from "~icons/bx/upload";
     import axios from "axios";
 
     let files;
@@ -65,6 +67,35 @@
                     </span>
                 </label>
             </div>
+            <DropdownBox>
+                <p slot="title">Advanced settings</p>
+                <div slot="content" class="has-text-left">
+                    <div class="columns is-mobile">
+                        <div class="column is-flex is-align-items-center">
+                            <p class="">Custom thumbnail:</p>
+                        </div>
+                        <div class="column is-flex is-justify-content-center">
+                            <div class="file">
+                                <label class="file-label">
+                                    <input
+                                        class="file-input"
+                                        type="file"
+                                        name="resume"
+                                    />
+                                    <span class="file-cta">
+                                        <span class="file-icon">
+                                            <BxUpload />
+                                        </span>
+                                        <span class="file-label">
+                                            Upload!
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </DropdownBox>
             <progress class="progress is-primary" value={progress} max="100"
             ></progress>
             <input
