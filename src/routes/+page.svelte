@@ -2,6 +2,7 @@
     import DropdownBox from "$lib/client/components/DropdownBox.svelte";
     import BxUpload from "~icons/bx/upload";
     import axios from "axios";
+    import { addUrl } from "$lib/client/api";
 
     let files;
     let lastFiles;
@@ -28,11 +29,8 @@
                     let directUrl = response?.["data"]?.["files"]?.[0]?.["url"];
                     progress = 100;
 
-                    let dbData = { videoUrl: directUrl };
-
-                    axios.post("/api/addUrl", dbData).then(function (response) {
-                        vidUrl =
-                            window.location.origin + "/v/" + response.data.id;
+                    addUrl(directUrl).then(function (id) {
+                        vidUrl = window.location.origin + "/v/" + id;
                     });
                 });
         }
