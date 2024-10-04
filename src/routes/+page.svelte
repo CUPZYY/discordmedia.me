@@ -3,6 +3,7 @@
     import BxUpload from "~icons/bx/upload";
     import axios from "axios";
     import { addUrl } from "$lib/client/api";
+    import { uploadFile } from "$lib/client/upload";
 
     let files;
     let lastFiles;
@@ -12,27 +13,14 @@
     $: {
         if (files?.[0] && lastFiles != files) {
             lastFiles = files;
-            let uploadData = new FormData();
-            uploadData.append("files[]", files[0]);
-            axios
-                .post("https://up1.fileditch.com/upload.php", uploadData, {
-                    onUploadProgress: (progressEvent) => {
-                        if (progressEvent.bytes) {
-                            progress = Math.round(
-                                (progressEvent.loaded / progressEvent.total) *
-                                    100
-                            );
-                        }
-                    },
-                })
-                .then(function (response) {
-                    let directUrl = response?.["data"]?.["files"]?.[0]?.["url"];
-                    progress = 100;
 
-                    addUrl(directUrl).then(function (id) {
-                        vidUrl = window.location.origin + "/v/" + id;
-                    });
+            uploadFile(files[0], function (progressValue) {
+                progress = progressValue;
+            }).then(function (directUrl) {
+                addUrl(directUrl).then(function (id) {
+                    vidUrl = window.location.origin + "/v/" + id;
                 });
+            });
         }
     }
 </script>
