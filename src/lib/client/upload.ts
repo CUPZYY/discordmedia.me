@@ -9,7 +9,7 @@ export async function uploadFile(
     uploadData.append("files[]", file);
 
     await axios
-        .post("https://up1.fileditch.com/temp/upload.php", uploadData, {
+        .post("https://up1.fileditch.com/upload.php", uploadData, {
             onUploadProgress: (progressEvent) => {
                 if (onProgress) {
                     if (progressEvent.bytes) {
