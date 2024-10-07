@@ -25,8 +25,14 @@
     }
 </script>
 
-<section class="section is-medium" style="zoom: 110%;">
-    <div class="container" style="max-width: 600px;">
+<section
+    class="section is-flex is-align-items-center"
+    style="zoom: 110%; height: 100%; padding-top: 0"
+>
+    <div
+        class="container is-flex is-flex-direction-column"
+        style="max-width: 600px"
+    >
         <div class="block">
             <a href=".">
                 <h1 class="title is-1 has-text-centered">discord video</h1>
