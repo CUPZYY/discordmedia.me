@@ -5,23 +5,21 @@
     import { addUrl } from "$lib/client/api";
     import { uploadFile } from "$lib/client/upload";
 
-    let files;
-    let lastFiles;
+    let vidFile = false;
+    let vidFileName = "No file uploaded";
     let vidUrl = "";
     let progress = 0;
-    files?.[0].name;
-    $: {
-        if (files?.[0] && lastFiles != files) {
-            lastFiles = files;
 
-            uploadFile(files[0], function (progressValue) {
-                progress = progressValue;
-            }).then(function (directUrl) {
-                addUrl(directUrl).then(function (id) {
-                    vidUrl = window.location.origin + "/v/" + id;
-                });
+    function onVidSelect(file) {
+        vidFile = true;
+        vidFileName = file.srcElement.files[0].name;
+        uploadFile(file.srcElement.files[0], function (progressValue) {
+            progress = progressValue;
+        }).then(function (directUrl) {
+            addUrl(directUrl).then(function (id) {
+                vidUrl = window.location.origin + "/v/" + id;
             });
-        }
+        });
     }
 </script>
 
@@ -40,7 +38,7 @@
         </div>
         <div class="container has-text-centered">
             <div
-                class="file is-boxed has-name {files?.[0]
+                class="file is-boxed has-name {vidFile
                     ? 'is-success'
                     : 'is-primary'} is-centered"
             >
@@ -49,13 +47,13 @@
                         class="file-input"
                         type="file"
                         accept="video/mp4, video/quicktime"
-                        bind:files
+                        on:change={onVidSelect}
                     />
                     <span class="file-cta">
                         <span class="file-label"> Upload! </span>
                     </span>
                     <span class="file-name">
-                        {files?.[0].name ?? "No file uploaded"}
+                        {vidFileName}
                     </span>
                 </label>
             </div>
