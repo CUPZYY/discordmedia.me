@@ -7,7 +7,9 @@
 
     let vidFile = false;
     let vidFileName = "No file uploaded";
+    let thumbFileName = "Upload!";
     let vidUrl = "";
+    let thumbUrl;
     let progress = 0;
 
     function onVidSelect(file) {
@@ -16,9 +18,15 @@
         uploadFile(file.srcElement.files[0], function (progressValue) {
             progress = progressValue;
         }).then(function (directUrl) {
-            addUrl(directUrl).then(function (id) {
+            addUrl(directUrl, thumbUrl).then(function (id) {
                 vidUrl = window.location.origin + "/v/" + id;
             });
+        });
+    }
+    function onThumbSelect(file) {
+        thumbFileName = file.srcElement.files[0].name;
+        uploadFile(file.srcElement.files[0]).then(function (directUrl) {
+            thumbUrl = directUrl;
         });
     }
 </script>
@@ -73,13 +81,14 @@
                                         class="file-input"
                                         type="file"
                                         name="resume"
+                                        on:change={onThumbSelect}
                                     />
                                     <span class="file-cta">
                                         <span class="file-icon">
                                             <BxUpload />
                                         </span>
                                         <span class="file-label">
-                                            Upload!
+                                            {thumbFileName}
                                         </span>
                                     </span>
                                 </label>
