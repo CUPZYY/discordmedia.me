@@ -4,10 +4,12 @@
     import axios from "axios";
     import { addUrl } from "$lib/client/api";
     import { uploadFile } from "$lib/client/upload";
+    import "bulma-switch";
 
     let vidFile = false;
     let vidFileName = "No file uploaded";
     let thumbFileName = "Upload!";
+    let thumbEnabled;
     let vidUrl = "";
     let thumbUrl;
     let progress = 0;
@@ -18,9 +20,11 @@
         uploadFile(file.srcElement.files[0], function (progressValue) {
             progress = progressValue;
         }).then(function (directUrl) {
-            addUrl(directUrl, thumbUrl).then(function (id) {
-                vidUrl = window.location.origin + "/v/" + id;
-            });
+            addUrl(directUrl, thumbEnabled ? thumbUrl : null).then(
+                function (id) {
+                    vidUrl = window.location.origin + "/v/" + id;
+                }
+            );
         });
     }
     function onThumbSelect(file) {
@@ -72,7 +76,26 @@
                         <div
                             class="column is-flex is-justify-content-center is-align-items-center"
                         >
-                            <p class="">Custom thumbnail:</p>
+                            <p class="">Use custom thumbnail:</p>
+                        </div>
+                        <div
+                            class="column is-half is-flex is-justify-content-center"
+                        >
+                            <input
+                                type="checkbox"
+                                name="thumbnailSwitch"
+                                id="thumbnailSwitch"
+                                class="switch is-medium"
+                                bind:checked={thumbEnabled}
+                            />
+                            <label for="thumbnailSwitch"></label>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div
+                            class="column is-flex is-justify-content-center is-align-items-center"
+                        >
+                            <p class="">Upload custom thumbnail:</p>
                         </div>
                         <div class="column is-flex is-justify-content-center">
                             <div class="file">
@@ -109,3 +132,6 @@
         </div>
     </div>
 </section>
+
+<style>
+</style>
