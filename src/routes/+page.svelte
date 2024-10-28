@@ -1,5 +1,6 @@
 <script async>
     import DropdownBox from "$lib/client/components/DropdownBox.svelte";
+    import SettingRow from "$lib/client/components/SettingRow.svelte";
     import BxUpload from "~icons/bx/upload";
     import axios from "axios";
     import { addUrl } from "$lib/client/api";
@@ -72,52 +73,36 @@
             <DropdownBox>
                 <p slot="title">Advanced settings</p>
                 <div slot="content" class="has-text-left">
-                    <div class="columns is-mobile">
-                        <div
-                            class="column is-flex is-justify-content-center is-align-items-center"
-                        >
-                            <p class="">Use custom thumbnail:</p>
-                        </div>
-                        <div
-                            class="column is-half is-flex is-justify-content-center"
-                        >
-                            <input
-                                type="checkbox"
-                                name="thumbnailSwitch"
-                                id="thumbnailSwitch"
-                                class="switch is-medium"
-                                bind:checked={thumbEnabled}
-                            />
-                            <label for="thumbnailSwitch"></label>
-                        </div>
-                    </div>
-                    <div class="columns is-mobile">
-                        <div
-                            class="column is-flex is-justify-content-center is-align-items-center"
-                        >
-                            <p class="">Upload custom thumbnail:</p>
-                        </div>
-                        <div class="column is-flex is-justify-content-center">
-                            <div class="file">
-                                <label class="file-label">
-                                    <input
-                                        class="file-input"
-                                        type="file"
-                                        name="resume"
-                                        on:change={onThumbSelect}
-                                    />
-                                    <span class="file-cta">
-                                        <span class="file-icon">
-                                            <BxUpload />
-                                        </span>
-                                        <span class="file-label">
-                                            {thumbFileName}
-                                        </span>
+                    <SettingRow title={"Use custom thumbnail:"}>
+                        <input
+                            type="checkbox"
+                            name="thumbnailSwitch"
+                            id="thumbnailSwitch"
+                            class="switch is-medium"
+                            bind:checked={thumbEnabled}
+                        />
+                        <label for="thumbnailSwitch"></label>
+                    </SettingRow>
+                    <SettingRow title={"Upload custom thumbnail:"}>
+                        <div class="file">
+                            <label class="file-label">
+                                <input
+                                    class="file-input"
+                                    type="file"
+                                    name="resume"
+                                    on:change={onThumbSelect}
+                                />
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <BxUpload />
                                     </span>
-                                </label>
-                            </div>
+                                    <span class="file-label">
+                                        {thumbFileName}
+                                    </span>
+                                </span>
+                            </label>
                         </div>
-                    </div>
+                    </SettingRow>
                 </div>
             </DropdownBox>
             <progress class="progress is-primary" value={progress} max="100"
