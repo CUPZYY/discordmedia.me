@@ -1,5 +1,8 @@
 <script async>
     import BxsChevronRight from "~icons/bxs/chevron-right";
+
+    export let title;
+
     let messageBody;
     let chevronDeg;
     function clickEvent(elmnt) {
@@ -21,14 +24,14 @@
         role="button"
         tabindex=""
     >
-        <slot name="title" class="has-text-centered"></slot>
+        <p class="has-text-centered">{title}</p>
         <BxsChevronRight
             id="ff"
             style="transform: rotate({chevronDeg}); transition: transform 1s ease"
         ></BxsChevronRight>
     </div>
     <div class="message-body closed" bind:this={messageBody}>
-        <slot name="content"></slot>
+        <slot></slot>
     </div>
 </article>
 

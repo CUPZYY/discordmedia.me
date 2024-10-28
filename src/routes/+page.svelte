@@ -70,40 +70,37 @@
                     </span>
                 </label>
             </div>
-            <DropdownBox>
-                <p slot="title">Advanced settings</p>
-                <div slot="content" class="has-text-left">
-                    <SettingRow title={"Use custom thumbnail:"}>
-                        <input
-                            type="checkbox"
-                            name="thumbnailSwitch"
-                            id="thumbnailSwitch"
-                            class="switch is-medium"
-                            bind:checked={thumbEnabled}
-                        />
-                        <label for="thumbnailSwitch"></label>
-                    </SettingRow>
-                    <SettingRow title={"Upload custom thumbnail:"}>
-                        <div class="file">
-                            <label class="file-label">
-                                <input
-                                    class="file-input"
-                                    type="file"
-                                    name="resume"
-                                    on:change={onThumbSelect}
-                                />
-                                <span class="file-cta">
-                                    <span class="file-icon">
-                                        <BxUpload />
-                                    </span>
-                                    <span class="file-label">
-                                        {thumbFileName}
-                                    </span>
+            <DropdownBox title={"Advanced settings"}>
+                <SettingRow title={"Use custom thumbnail:"}>
+                    <input
+                        type="checkbox"
+                        name="thumbnailSwitch"
+                        id="thumbnailSwitch"
+                        class="switch is-medium"
+                        bind:checked={thumbEnabled}
+                    />
+                    <label for="thumbnailSwitch"></label>
+                </SettingRow>
+                <SettingRow title={"Upload custom thumbnail:"}>
+                    <div class="file">
+                        <label class="file-label">
+                            <input
+                                class="file-input"
+                                type="file"
+                                name="resume"
+                                on:change={onThumbSelect}
+                            />
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <BxUpload />
                                 </span>
-                            </label>
-                        </div>
-                    </SettingRow>
-                </div>
+                                <span class="file-label">
+                                    {thumbFileName}
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                </SettingRow>
             </DropdownBox>
             <progress class="progress is-primary" value={progress} max="100"
             ></progress>
