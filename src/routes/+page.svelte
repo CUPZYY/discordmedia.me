@@ -9,7 +9,7 @@
 
     let vidFile = false;
     let vidFileName = "No file uploaded";
-    let thumbFileName = "Upload!";
+    let thumbFileName = "";
     let uploadThumbRow;
     let vidUrl = "";
     let thumbUrl;
@@ -63,7 +63,7 @@
                         on:change={onVidSelect}
                     />
                     <span class="file-cta">
-                        <span class="file-label"> Upload! </span>
+                        <span class="file-label">Select file</span>
                     </span>
                     <span class="file-name">
                         {vidFileName}
@@ -99,7 +99,11 @@
                                     <BxUpload />
                                 </span>
                                 <span class="file-label">
-                                    {thumbFileName}
+                                    {#if thumbFileName}
+                                        {thumbFileName}
+                                    {:else}
+                                        Select file
+                                    {/if}
                                 </span>
                             </span>
                         </label>
