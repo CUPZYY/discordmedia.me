@@ -10,7 +10,7 @@
     let vidFile = false;
     let vidFileName = "No file uploaded";
     let thumbFileName = "Upload!";
-    let thumbEnabled;
+    let uploadThumbRow;
     let vidUrl = "";
     let thumbUrl;
     let progress = 0;
@@ -21,7 +21,7 @@
         uploadFile(file.srcElement.files[0], function (progressValue) {
             progress = progressValue;
         }).then(function (directUrl) {
-            addUrl(directUrl, thumbEnabled ? thumbUrl : null).then(
+            addUrl(directUrl, uploadThumbRow.closed ? null : thumbUrl).then(
                 function (id) {
                     vidUrl = window.location.origin + "/v/" + id;
                 }
@@ -77,11 +77,15 @@
                         name="thumbnailSwitch"
                         id="thumbnailSwitch"
                         class="switch is-medium"
-                        bind:checked={thumbEnabled}
+                        on:change={uploadThumbRow.openClose()}
                     />
                     <label for="thumbnailSwitch"></label>
                 </SettingRow>
-                <SettingRow title={"Upload custom thumbnail:"}>
+                <SettingRow
+                    title={"Upload custom thumbnail:"}
+                    closed={true}
+                    bind:this={uploadThumbRow}
+                >
                     <div class="file">
                         <label class="file-label">
                             <input
