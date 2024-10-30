@@ -36,6 +36,9 @@
 </article>
 
 <style>
+    .message {
+        overflow-y: hidden;
+    }
     .message-body {
         transition:
             height 1s ease,
