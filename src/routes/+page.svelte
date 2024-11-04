@@ -79,7 +79,7 @@
                         type="checkbox"
                         name="thumbnailSwitch"
                         id="thumbnailSwitch"
-                        class="switch is-medium"
+                        class="switch is-medium is-success"
                         on:change={uploadThumbRow.openClose()}
                     />
                     <label for="thumbnailSwitch"></label>
