@@ -10,25 +10,39 @@
     let thumbFile;
     let uploadThumbRow;
     let vidUrl = "";
-    let thumbUrl;
     let progress = 0;
 
     function onVidSelect(file) {
         vidFile = file.srcElement.files[0];
-        uploadFile(vidFile, function (progressValue) {
-            progress = progressValue;
-        }).then(function (directUrl) {
-            addUrl(directUrl, uploadThumbRow.closed ? null : thumbUrl).then(
-                function (id) {
-                    vidUrl = window.location.origin + "/v/" + id;
-                }
-            );
-        });
     }
+
     function onThumbSelect(file) {
         thumbFile = file.srcElement.files[0];
-        uploadFile(thumbFile).then(function (directUrl) {
-            thumbUrl = directUrl;
+    }
+
+    function updateProgress(progressValue) {
+        progress = progressValue;
+    }
+
+    async function upload(vidFile, thumbFile) {
+        let thumbnail;
+        let video;
+        await uploadFile(vidFile, updateProgress).then(function (url) {
+            video = url;
+        });
+        if (!uploadThumbRow.closed) {
+            await uploadFile(thumbFile).then(function (url) {
+                thumbnail = url;
+            });
+        }
+        return { video: video, thumbnail: thumbnail };
+    }
+
+    function uploadBtnEvent() {
+        upload(vidFile, thumbFile).then(function (urls) {
+            addUrl(urls.video, urls.thumbnail).then(function (id) {
+                vidUrl = window.location.origin + "/v/" + id;
+            });
         });
     }
 </script>
@@ -117,9 +131,12 @@
                 type="text"
                 placeholder="No file uploaded"
                 value={vidUrl}
-                class="input {vidUrl ? 'is-success' : 'is-primary'}"
+                class="input block {vidUrl ? 'is-success' : 'is-primary'}"
                 readonly
             />
+            <button class="button is-primary block" on:click={uploadBtnEvent}
+                >Upload!</button
+            >
         </div>
     </div>
 </section>
