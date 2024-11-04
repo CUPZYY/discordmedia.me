@@ -2,13 +2,12 @@
     import DropdownBox from "$lib/client/components/DropdownBox.svelte";
     import SettingRow from "$lib/client/components/SettingRow.svelte";
     import BxUpload from "~icons/bx/upload";
-    import axios from "axios";
     import { addUrl } from "$lib/client/api";
     import { uploadFile } from "$lib/client/upload";
     import "bulma-switch";
 
     let vidFile = false;
-    let vidFileName = "No file uploaded";
+    let vidFileName = "";
     let thumbFileName = "";
     let uploadThumbRow;
     let vidUrl = "";
@@ -66,7 +65,11 @@
                         <span class="file-label">Select file</span>
                     </span>
                     <span class="file-name">
-                        {vidFileName}
+                        {#if vidFileName}
+                            {vidFileName}
+                        {:else}
+                            No file uploaded
+                        {/if}
                     </span>
                 </label>
             </div>
