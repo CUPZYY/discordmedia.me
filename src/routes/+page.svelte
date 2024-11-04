@@ -6,18 +6,16 @@
     import { uploadFile } from "$lib/client/upload";
     import "bulma-switch";
 
-    let vidFile = false;
-    let vidFileName = "";
-    let thumbFileName = "";
+    let vidFile;
+    let thumbFile;
     let uploadThumbRow;
     let vidUrl = "";
     let thumbUrl;
     let progress = 0;
 
     function onVidSelect(file) {
-        vidFile = true;
-        vidFileName = file.srcElement.files[0].name;
-        uploadFile(file.srcElement.files[0], function (progressValue) {
+        vidFile = file.srcElement.files[0];
+        uploadFile(vidFile, function (progressValue) {
             progress = progressValue;
         }).then(function (directUrl) {
             addUrl(directUrl, uploadThumbRow.closed ? null : thumbUrl).then(
@@ -28,8 +26,8 @@
         });
     }
     function onThumbSelect(file) {
-        thumbFileName = file.srcElement.files[0].name;
-        uploadFile(file.srcElement.files[0]).then(function (directUrl) {
+        thumbFile = file.srcElement.files[0];
+        uploadFile(thumbFile).then(function (directUrl) {
             thumbUrl = directUrl;
         });
     }
@@ -65,8 +63,8 @@
                         <span class="file-label">Select file</span>
                     </span>
                     <span class="file-name">
-                        {#if vidFileName}
-                            {vidFileName}
+                        {#if vidFile}
+                            {vidFile.name}
                         {:else}
                             No file uploaded
                         {/if}
@@ -102,8 +100,8 @@
                                     <BxUpload />
                                 </span>
                                 <span class="file-label">
-                                    {#if thumbFileName}
-                                        {thumbFileName}
+                                    {#if thumbFile}
+                                        {thumbFile.name}
                                     {:else}
                                         Select file
                                     {/if}
