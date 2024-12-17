@@ -49,18 +49,19 @@
 
 <section
     class="section is-flex is-align-items-center"
-    style="zoom: 110%; height: 100%; padding-top: 0"
+    style="zoom: 110%; height: 100%; padding-top: 0; padding-bottom: 0"
 >
     <div
         class="container is-flex is-flex-direction-column"
         style="max-width: 600px"
     >
-        <div class="block">
+        <div class="block has-text-centered">
             <a href=".">
-                <h1 class="title is-1 has-text-centered">discord video</h1>
+                <h1 class="title is-1">upload your videos</h1>
             </a>
+            <h5>Free video uploading for discord! Max size is 5GB</h5>
         </div>
-        <div class="container has-text-centered">
+        <div class="container has-text-centered" style="padding-bottom: 10%;">
             <div
                 class="file is-boxed has-name {vidFile
                     ? 'is-success'
@@ -137,6 +138,12 @@
             <button class="button is-primary block" on:click={uploadBtnEvent}
                 >Upload!</button
             >
+        </div>
+        <div class="content has-text-centered">
+            <p>
+                <strong>discordmedia.me</strong> by
+                <a href="https://github.com/CUPZYY">CUPZYY</a>
+            </p>
         </div>
     </div>
 </section>
