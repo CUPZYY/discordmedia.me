@@ -10,11 +10,5 @@
     <meta property="og:type" content="video.other" />
     <meta property="og:video:url" content={data.video_url} />
     <meta property="og:image" content={data.thumbnail_url} />
+    <meta http-equiv="refresh" content="0; url=/" />
 </svelte:head>
-
-<section class="section">
-    <video width="500" poster={data.thumbnail_url} class="" controls>
-        <source src={data.video_url} type="video/mp4" />
-        <track kind="captions" />
-    </video>
-</section>
