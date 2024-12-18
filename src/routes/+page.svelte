@@ -49,7 +49,7 @@
 
 <section
     class="section is-flex is-align-items-center"
-    style="zoom: 110%; height: 100%; padding-top: 0; padding-bottom: 0"
+    style="zoom: 110%; height: 100%; width: 100%; padding-top: 0; padding-bottom: 0"
 >
     <div
         class="container is-flex is-flex-direction-column"
