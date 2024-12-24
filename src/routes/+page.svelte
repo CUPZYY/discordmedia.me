@@ -1,6 +1,8 @@
 <script async>
     import DropdownBox from "$lib/client/components/DropdownBox.svelte";
     import SettingRow from "$lib/client/components/SettingRow.svelte";
+    import Title from "$lib/client/components/Title.svelte";
+    import Footer from "$lib/client/components/Footer.svelte";
     import BxUpload from "~icons/bx/upload";
     import { addUrl } from "$lib/client/api";
     import { uploadFile } from "$lib/client/upload";
@@ -55,12 +57,7 @@
         class="container is-flex is-flex-direction-column"
         style="max-width: 600px"
     >
-        <div class="block has-text-centered">
-            <a href=".">
-                <h1 class="title is-1">discordmedia.me</h1>
-            </a>
-            <h5>Free video uploading for discord! Max size is 5GB</h5>
-        </div>
+        <Title />
         <div class="container has-text-centered" style="padding-bottom: 10%;">
             <div
                 class="file is-boxed has-name {vidFile
@@ -139,21 +136,7 @@
                 >Upload!</button
             >
         </div>
-        <div class="content has-text-centered">
-            <p>
-                <strong>discordmedia.me</strong> by
-                <a href="https://github.com/CUPZYY">CUPZYY</a>
-            </p>
-            <p>
-                Donations are greatly appreciated, and it helps keep our tools
-                ad-free
-                <br />
-                <a
-                    href="https://www.paypal.com/donate/?hosted_button_id=ED86J8GEUGTQL"
-                    ><strong>Donate here!</strong></a
-                >
-            </p>
-        </div>
+        <Footer></Footer>
     </div>
 </section>
 
