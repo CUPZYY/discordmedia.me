@@ -35,6 +35,7 @@
                 <source src={data.video_url} type="video/mp4" />
             </video>
         </div>
+        <a class="button is-primary block" href="/">Upload your own video!</a>
         <Footer></Footer>
     </div>
 </section>
