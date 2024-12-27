@@ -43,7 +43,7 @@
 <style>
     .video-mask {
         overflow: hidden;
-        border-radius: 20px;
+        border-radius: var(--bulma-radius);
         line-height: 0;
     }
 </style>
