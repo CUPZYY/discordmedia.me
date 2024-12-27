@@ -1,6 +1,12 @@
 /** @type {import("./$types").PageServerLoad} */
 import { getData } from "$lib/server/datebase/wrapper";
+import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
-    return await getData(params.id);
+    let data = await getData(params.id);
+    if (data) {
+        return await data;
+    } else {
+        error(404, "Not Found");
+    }
 }
