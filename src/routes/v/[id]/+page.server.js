@@ -1,5 +1,5 @@
 /** @type {import("./$types").PageServerLoad} */
-import { getData } from "$lib/server/datebase/wrapper";
+import { getData } from "$lib/server/database/wrapper";
 import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {

@@ -1,4 +1,4 @@
-import { addUrl, generateID } from "$lib/server/datebase/wrapper";
+import { addUrl, generateID } from "$lib/server/database/wrapper";
 import { json } from "@sveltejs/kit";
 
 export async function POST({ request, cookies }) {
