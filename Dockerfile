@@ -1,5 +1,5 @@
 FROM node:22.9.0-alpine3.20 AS builder
-LABEL org.opencontainers.image.source=https://github.com/CUPZYY/discord-video
+LABEL org.opencontainers.image.source=https://github.com/CUPZYY/discordmedia.me
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
