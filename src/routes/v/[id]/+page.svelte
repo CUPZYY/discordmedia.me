@@ -23,17 +23,19 @@
         style="max-width: 600px"
     >
         <Title></Title>
-        <div class="video-mask block">
-            <!-- svelte-ignore a11y-media-has-caption -->
-            <video
-                poster={data.thumbnail_url}
-                controls
-                controlslist="noplaybackrate nodownload"
-                disablepictureinpicture
-                disableremoteplayback
-            >
-                <source src={data.video_url} type="video/mp4" />
-            </video>
+        <div class="block">
+            <div class="video-mask">
+                <!-- svelte-ignore a11y-media-has-caption -->
+                <video
+                    poster={data.thumbnail_url}
+                    controls
+                    controlslist="noplaybackrate nodownload"
+                    disablepictureinpicture
+                    disableremoteplayback
+                >
+                    <source src={data.video_url} type="video/mp4" />
+                </video>
+            </div>
         </div>
         <a class="button is-primary block" href="/">Upload your own video!</a>
         <Footer></Footer>
@@ -42,7 +44,9 @@
 
 <style>
     .video-mask {
+        width: fit-content;
         overflow: hidden;
+        justify-self: center;
         border-radius: var(--bulma-radius);
         line-height: 0;
     }
