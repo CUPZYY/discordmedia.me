@@ -14,6 +14,8 @@ jobs:
               run: |
                   echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
                   echo IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7) >> $GITHUB_ENV
+            - name: "Create db directory"
+              run: mkdir data
             - name: "Create env file"
               run: |
                   touch .env
