@@ -1,38 +1,26 @@
-# create-svelte
+# discordmedia.me
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+**Discordmedia.me** is a website that allows users to upload videos and generate a link that can be shared on Discord with full embed support. Perfect for sharing media directly without limitations!
 
-## Creating a project
+## Features
+- Upload videos quickly and easily.
+- Generates links that work seamlessly with Discord embeds.
+- No compression or loss of quality.
+- User-friendly and easy to navigate.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## How to Use
+1. Visit [Discordmedia.me](https://discordmedia.me).
+2. Upload the video you want to share.
+3. Copy the generated link.
+4. Share the link on Discord and enjoy full embed support!
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Technology
+This project is built with the following technologies:
+- **Frontend & Backend**: [SvelteKit](https://kit.svelte.dev/)
+- **Database**: [SQLite](https://sqlite.org/)
+- **Hosting**: [DigitalOcean](https:///digitalocean.com/)
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Contact
+Have questions or feedback? Get in touch:
+- Email: [arne.habrekke@null.net](mailto:arne.habrekke@null.net)
+- Discord: cupzyy
