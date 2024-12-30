@@ -4,10 +4,10 @@
         <a href="https://github.com/CUPZYY">CUPZYY</a>
     </p>
     <p>
-        Donations are greatly appreciated, and it helps keep our tools ad-free
+        Star the github repository!
         <br />
-        <a href="https://www.paypal.com/donate/?hosted_button_id=ED86J8GEUGTQL"
-            ><strong>Donate here!</strong></a
+        <a href="https://github.com/CUPZYY/discordmedia.me"
+            ><strong>GitHub Repository</strong></a
         >
     </p>
 </div>
