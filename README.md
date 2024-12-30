@@ -19,6 +19,7 @@ This project is built with the following technologies:
 - **Frontend & Backend**: [SvelteKit](https://kit.svelte.dev/)
 - **Database**: [SQLite](https://sqlite.org/)
 - **Hosting**: [DigitalOcean](https:///digitalocean.com/)
+- **File Storage**: [FileDitch](https://fileditch.com/)
 
 ## Contact
 Have questions or feedback? Get in touch:
